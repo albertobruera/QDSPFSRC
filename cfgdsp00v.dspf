@@ -1,4 +1,4 @@
-     A*%%TS  SD  20201104  143404  ALBERTO     REL-V7R3M0  5770-WDS
+     A*%%TS  SD  20201122  112920  ALBERTO     REL-V7R4M0  5770-WDS
      A*====================================================================
      A*====================================================================
      A*%%EC
@@ -41,6 +41,9 @@
      A*====================================================================
      A          R FPRCCTL                   SFLCTL(FPRCSFL)
      A*%%TS  SD  20201028  220018  ALBERTO     REL-V7R4M0  5770-WDS
+     A*                                     WINDOW(2 1 22 128)
+     A*                                     WDWBORDER((*DSPATR HI) (*CHAR ' _ |-
+     A*                                     ||_|'))
      A                                      SFLSIZ(9999)
      A                                      SFLPAG(0018)
      A                                      OVERLAY
@@ -108,8 +111,11 @@
      A            M_MODE         1A  H
      A          R MSKCTL                    SFLCTL(MSKSFL)
      A*%%TS  SD  20201010  000837  ALBERTO     REL-V7R4M0  5770-WDS
+     A*                                     WINDOW(2 1 22 128)
+     A*                                     WDWBORDER((*DSPATR HI) (*CHAR ' _ |-
+     A*                                     ||_|'))
      A                                      SFLSIZ(9999)
-     A                                      SFLPAG(0007)
+     A                                      SFLPAG(008)
      A                                      OVERLAY
      A  31                                  SFLDSP
      A  32                                  SFLDSPCTL
@@ -142,9 +148,9 @@
      A                                      COLOR(BLU)
      A                                 26 29'F7=SCHERMO FPROC'
      A                                      COLOR(BLU)
-     A            ERRMSGMSK     80A  B 25  1DSPATR(HI)
+     A            ERRMSGMSK     80A  B 25  1MSGID(&MSGID ENCMSKMSGF)
      A N90                                  DSPATR(ND)
-     A                                      MSGID(&MSGID ENCMSKMSGF)
+     A                                      DSPATR(HI)
      A            MSGID          7A  H
      A                                 26 48'F9=FOLD/DROP'
      A                                      COLOR(BLU)
@@ -175,7 +181,7 @@
      A                                  2 76'Pgm Field proc.'
      A                                      DSPATR(HI)
      A            UF_PGMFLDP    10A  B  3 76
-     A                                  6  1'F12=Annulla e applica'
+     A                                  6  1'F12=Annulla'
      A                                      DSPATR(HI)
      A                                  6 23'ENTER=salva dati'
      A                                      DSPATR(HI)
@@ -184,7 +190,8 @@
      A                                      DSPATR(HI)
      A            MSGID          7A  H
      A          R MSKUPD
-     A*%%TS  SD  20201104  143404  ALBERTO     REL-V7R3M0  5770-WDS
+     A*%%TS  SD  20201122  103952  ALBERTO     REL-V7R4M0  5770-WDS
+     A*                                     OVERLAY
      A                                      WINDOW(10 2 7 126)
      A                                      WDWBORDER((*DSPATR RI) (*CHAR '    -
      A                                          '))
@@ -310,18 +317,18 @@
      A            EC_TIPDAT     10   O  5 50
      A            EC_LUNG       10  0O  5 65
      A            EC_STATO      10   O  5 79
+     A            EC_MASNOM     35A  H
      A          R ELECAMCTL                 SFLCTL(ELECAMSFL)
-     A*%%TS  SD  20201103  142338  ALBERTO     REL-V7R3M0  5770-WDS
+     A*%%TS  SD  20201122  103238  ALBERTO     REL-V7R4M0  5770-WDS
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A  33                                  SFLCLR
+     A N48                                  SFLEND(*MORE)
      A                                      SFLSIZ(9999)
      A                                      SFLPAG(0008)
      A                                      WINDOW(8 2 15 124)
      A                                      WDWBORDER((*DSPATR RI) (*CHAR '    -
      A                                          '))
-     A                                      OVERLAY
-     A  31                                  SFLDSP
-     A  32                                  SFLDSPCTL
-     A  33                                  SFLCLR
-     A N48                                  SFLEND(*MORE)
      A                                  1 48'ELENCO CAMPI FILE'
      A                                      DSPATR(HI)
      A                                  2  2'Nome libreria'
@@ -336,4 +343,11 @@
      A                                      COLOR(YLW)
      A                                  2 78' Stato'
      A                                      COLOR(YLW)
-     A            R_CAMPO       10   B  3 35COLOR(WHT)
+     A            R_CAMPO       10A  B  3 35COLOR(WHT)
+     A          R PIEDEELEC
+     A*%%TS  SD  20201122  103952  ALBERTO     REL-V7R4M0  5770-WDS
+     A                                 22  5'ENTER=INVIA DATI X=SCELTA CAMPO'
+     A                                      COLOR(BLU)
+     A          R DUMMY
+     A*%%TS  SD  20201122  112920  ALBERTO     REL-V7R4M0  5770-WDS
+     A                                  1  3' '
